@@ -43,6 +43,14 @@ public class DirectMappedCache extends Cache {
         this.cacheMisses = 0;
     }
 
+    public int getCacheHits() {
+        return cacheHits;
+    }
+
+    public int getCacheMisses() {
+        return cacheMisses;
+    }
+
     public void write(int address, int data) throws Exception {
         if (address < 0 || address >= Integer.MAX_VALUE) {
             throw new IllegalArgumentException("Invalid memory address");
@@ -80,12 +88,16 @@ public class DirectMappedCache extends Cache {
         }
     }
 
-    public int getCacheHits() {
-        return cacheHits;
-    }
+    // hitTime -> Time taken for a cache hit in nanoseconds
+    // missPenalty ->  Time penalty for a cache miss in nanoseconds
 
-    public int getCacheMisses() {
-        return cacheMisses;
+    public void calculateEffectiveTime(long hitTime , long missPenalty) {
+        int totalAccesses = cacheHits + cacheMisses;
+        double hitRate = (double) cacheHits / totalAccesses;
+        double missRate = (double) cacheMisses / totalAccesses;
+
+        double effectiveTime = hitRate * hitTime + missRate * (hitTime + missPenalty);
+        System.out.println(effectiveTime);
     }
 
 }
