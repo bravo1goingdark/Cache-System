@@ -51,7 +51,7 @@ public class DirectMappedCache extends Cache {
         return cacheMisses;
     }
 
-    public void write(int address, int data) throws Exception {
+    public void write(int address , int data) throws Exception {
         if (address < 0 || address >= Integer.MAX_VALUE) {
             throw new IllegalArgumentException("Invalid memory address");
         }
@@ -97,7 +97,7 @@ public class DirectMappedCache extends Cache {
         double missRate = (double) cacheMisses / totalAccesses;
 
         double effectiveTime = hitRate * hitTime + missRate * (hitTime + missPenalty);
-        System.out.println(effectiveTime);
+        System.out.println("Effective time:" + effectiveTime);
     }
 
 }

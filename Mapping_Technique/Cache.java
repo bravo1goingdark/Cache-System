@@ -3,7 +3,7 @@ package Mapping_Technique;
 public abstract class Cache {
 
     public abstract int read (int address) throws Exception;
-    public abstract void write(int data , int address) throws Exception;
+    public abstract void write(int address , int data) throws Exception;
     public abstract int getCacheHits();
     public abstract int getCacheMisses();
     public abstract void calculateEffectiveTime(long hitTime , long missPenalty);
