@@ -20,8 +20,6 @@ public class FIFOReplacementPolicy implements ReplacementPolicy {
         if (!accessOrder.isEmpty()) {
             return accessOrder.poll();
         } else {
-            // Handle the case where the queue is empty
-            // You might want to throw an exception or return a special value
             return -1; // Example: Return -1 to indicate an issue
         }
     }

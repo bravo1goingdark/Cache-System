@@ -63,7 +63,6 @@ public class CacheWithReplacementPolicies {
                 replacementPolicy.accessed(cacheLineIndex);
                 System.out.println("Write - Cache Miss: Address " + address + ", Data: " + data);
             } else {
-                // Handle the case where replacedLineIndex is -1 (indicating an issue)
                 System.out.println("Write - Cache Miss: Unable to replace line. Cache may be full.");
             }
         }
@@ -151,7 +150,7 @@ public class CacheWithReplacementPolicies {
         // Calculate and print the effective time
         System.out.println("Total Effective Time: " + cache.calculateEffectiveTime() + " nanoseconds");
 
-        // Switch to FIFO replacement policy
+        // Switching to FIFO replacement policy
         cache.setReplacementPolicy(new FIFOReplacementPolicy());
 
         // Simulating reads and writes with FIFO policy
